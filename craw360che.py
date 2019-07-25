@@ -61,10 +61,10 @@ def get_tb(seed):
         一开始爬的时候总是出错，AttributeError: 'NoneType' object has no attribute 'string，后来发现tr_class长度94，应该是47
         原来网页别的地方还有table标签，还有param-row，所以出了问题。
 """
-        # print(td_tag.string)
-        # div_tags = tr.find_all('div')
-        # for div in div_tags:
-        #    print(div.find(text=True).strip())
+    # print(td_tag.string)
+    # div_tags = tr.find_all('div')
+    # for div in div_tags:
+    #    print(div.find(text=True).strip())
 
 
 def get_tb2(seed):
