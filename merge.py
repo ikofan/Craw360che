@@ -7,7 +7,7 @@ def get_excels_for_merge(xls_dir):
     for root, dirs, files in os.walk(xls_dir):
         for file in files:
             if os.path.splitext(file)[1] == '.xls':
-                xls.append(os.path.join(root,file))
+                xls.append(os.path.join(root, file))
     return xls
 # 读取目录下的所有excel文件路径，返回列表
 

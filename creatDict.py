@@ -4,19 +4,19 @@ import openpyxl
 def createDictList(excel_file):         # 读取excel表内容，取出不重复的词，建立待翻译的字典
     wb = openpyxl.load_workbook(excel_file)
     ws = wb.active
-    listSet = set([])
+    list_set = set([])
     # zh_hans = re.compile(u'[\u4e00-\u9fa5]+')
     for column in ws["A:W"]:
-        cellList = []       # 把整列单元格内容读入cellList中
+        cell_list = []       # 把整列单元格内容读入cellList中
         for cell in column:
             if is_contain_chinese(str(cell.value)):     # 此处有坑，一定要用str将单元格转成string格式，要不然报错
-                cellList.append(cell.value)
-        listSet = listSet | set(cellList)       # set()好像必须用列表类型才行，一开始用cell.value总是出错，于是加入cellList这个列表，解决
-    DictList = list(listSet)
+                cell_list.append(cell.value)
+        list_set = list_set | set(cell_list)       # set()好像必须用列表类型才行，一开始用cell.value总是出错，于是加入cellList这个列表，解决
+    dict_list = list(list_set)
     wb2 = openpyxl.Workbook()       #workbook一定要大写W，坑
     ws2 = wb2.active
     i = 1
-    for dict in DictList:
+    for dict in dict_list:
         ws2["A"+str(i)] = dict
         i += 1
     wb2.save("D:\\360che\\dict.xlsx")
@@ -51,20 +51,13 @@ def is_chinese(string):
     return True
 
 
-def test2():
-    wb = openpyxl.Workbook()
-    ws = wb.active
-    ws["A1"] = "11231231231"
-    wb.save("D:\\test.xlsx")
-
-def test(excel_file):
-    wb = openpyxl.load_workbook(excel_file)
-    ws = wb.active
-    rows = []
-    for row in ws.iter_rows():
-        rows.append(row)
-    print()
+def main():
+    createDictList("D:\\360che\\create_dict.xlsx")
 
 
-createDictList("D:\\360che\\create_dict.xlsx")
+if __name__ == '__main__':
+    main()
+
+
+
 # test("D:\\360che\\create_dict.xlsx")
