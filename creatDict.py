@@ -1,12 +1,12 @@
 import openpyxl
 
-
+# 建立字典的中文，截取单元格内容，只能截取短的内容，长的也可以，但是从翻译效果上可能不太好
 def createDictList(excel_file):         # 读取excel表内容，取出不重复的词，建立待翻译的字典
     wb = openpyxl.load_workbook(excel_file)
     ws = wb.active
     list_set = set([])
     # zh_hans = re.compile(u'[\u4e00-\u9fa5]+')
-    for column in ws["A:W"]:
+    for column in ws["A:AA"]:
         cell_list = []       # 把整列单元格内容读入cellList中
         for cell in column:
             if is_contain_chinese(str(cell.value)):     # 此处有坑，一定要用str将单元格转成string格式，要不然报错
@@ -19,7 +19,7 @@ def createDictList(excel_file):         # 读取excel表内容，取出不重复
     for dict in dict_list:
         ws2["A"+str(i)] = dict
         i += 1
-    wb2.save("D:\\360che\\dict.xlsx")
+    wb2.save("dict.xlsx")
 
 
 def is_contain_chinese(check_str):
@@ -52,7 +52,7 @@ def is_chinese(string):
 
 
 def main():
-    createDictList("D:\\360che\\create_dict.xlsx")
+    createDictList("result.xlsx")
 
 
 if __name__ == '__main__':
