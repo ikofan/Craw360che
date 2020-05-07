@@ -1,11 +1,13 @@
 import re
-import requests
-from bs4 import BeautifulSoup
-import xlwt, xlrd
+
 import openpyxl
-import lxml
-import html5lib
-import time
+import requests
+import xlrd
+import xlwt
+from bs4 import BeautifulSoup
+
+
+# import lxml
 
 # 在写css时，标签名不加任何修饰，类名前加点，id名前加 #，我们可以用类似的方法来筛选元素，用到的方法是soup.select()，返回类型是list。
 
