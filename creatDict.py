@@ -1,7 +1,10 @@
 import openpyxl
 
 # 建立字典的中文，截取单元格内容，只能截取短的内容，长的也可以，但是从翻译效果上可能不太好
-def createDictList(excel_file):         # 读取excel表内容，取出不重复的词，建立待翻译的字典
+# 读取excel表内容，只能是xlsx格式，取出不重复的词，建立待翻译的字典
+
+
+def create_dict_list(excel_file):
     wb = openpyxl.load_workbook(excel_file)
     ws = wb.active
     list_set = set([])
@@ -52,7 +55,7 @@ def is_chinese(string):
 
 
 def main():
-    createDictList("result.xlsx")
+    create_dict_list("result.xlsx")
 
 
 if __name__ == '__main__':
